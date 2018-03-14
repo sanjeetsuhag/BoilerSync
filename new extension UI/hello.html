@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src='hello.js'></script>
-<link href="hello.css" rel="stylesheet" type="text/css" />
+  <script src="jquery-1.12.0.min.js"></script>
+  <script src="jquery-migrate-1.2.1.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src='hello.js'></script>
+  <link href="hello.css" rel="stylesheet" type="text/css" />
 </head>
 <!--set up classes and events buttons when the page start-->
-<body onload="setClassButtons() ; initDate();">
+<body >
 <!--Google Calendar login-->
 
     <div class="container">
@@ -28,7 +30,12 @@
             	</form><!-- /form -->
        </div><!-- /card-container -->
 </div><!-- /container -->
-<span class = "PageTitle">Class List </span>
+<table id=courses>
+  <tr>
+    <th>*</th>
+    <th>Registered Courses</th>
+  </tr>
+</table>
 <span class = "PageTitle" id="classTerm" style = "color:#CFB53B; margin-right">Summer 2018</span>
 <h1></h1>
 <!-- The Modal -->
