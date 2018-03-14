@@ -18,5 +18,7 @@ var calendar_entries = Array.from(schedule_items).map(item => {
   calendar_entry["location"] = location;
   return calendar_entry;
 });
+
+
 // Send standard data object to main script.
 chrome.extension.sendRequest(calendar_entries);
