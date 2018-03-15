@@ -9,27 +9,8 @@
   <link href="hello.css" rel="stylesheet" type="text/css" />
 </head>
 <!--set up classes and events buttons when the page start-->
-<body >
+<body onload="setClassButtons() ; initDate();">
 <!--Google Calendar login-->
-
-    <div class="container">
-	<img class="mb-4 img-responsive center-block" src="https://oit.boisestate.edu/wp-content/blogs.dir/1/files/2015/11/calendar.png" alt="" width="200" height="100">
-	<h1 class="welcome text-center">Welcome to Boiler Schedule</h1>
-		<div class="card card-container">
-    		<h2 class ="login_title">1.Google Calender Login<h2>
-        		<form class="form-signin">
-              	  <span id="reauth-email" class="reauth-email"></span>
-               	  <p class="input_title">Username</p>
-               	  <input type="text" id="inputEmail" class="login_box" placeholder="Enter Username" maxlength = 20 required autofocus>
-                	<p class="input_title">Password</p>
-                  <input type="password" id="inputPassword" class="login_box" placeholder="Enter Password" maxlength = 20 required>
-                	<div id="remember" class="checkbox">
-                		<span id="reauth-email" class="reauth-email"></span>
-                	</div>
-                	<button class="btn btn-lg btn-primary btn-signin" type="submit" onclick="validate()" id ="logInbtn">Login</button>
-            	</form><!-- /form -->
-       </div><!-- /card-container -->
-</div><!-- /container -->
 <table id=courses>
   <tr>
     <th>*</th>

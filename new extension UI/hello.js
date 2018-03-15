@@ -3,24 +3,7 @@ var allCourses = [
   		["CS 30700 LE1","Jan 08, 2018","Apr 28, 2018","MWF","11:30 am - 12:20 pm","Class of 1950 Lecture Hall 224",""],
   		["CS 40800 LE1","Jan 08, 2018","Apr 28, 2018","TR","9:00 am - 10:15 am","Wetherill Lab of Chemistry 104",""]
 ];
-var loggined = false;
-/*** Below function Executes on click of login button.***/
-function validate(){
-	var username = document.getElementById("inputEmail").value;
-	var password = document.getElementById("inputPassword").value;
-	if ( username == "google" && password == "cs408"){
-		alert ("Login successfully");
-		//send data to google calendar
-        document.getElementById("inputEmail").disabled = true;
-        document.getElementById("inputPassword").disabled = true;
-        document.getElementById("logInbtn").disabled = true;
-        loggined = true;
-		return false;
-	}
-	else{
-		alert("Your username or password is incorrect. Please try again.");
-	}
-}
+
 
 /***function to set up buttons when the page start***/
 function setClassButtons(){
@@ -250,8 +233,8 @@ function closeCalendarModal() {
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
    	if (event.target == modal1) {
-    	modal1.style.display = "none";
-        clearAllInput();
+    		modal1.style.display = "none";
+        	clearAllInput();
 	}
 }
 //function to fetch data to google calendar
@@ -264,43 +247,3 @@ function sendDataToGoogle(){
     	alert("Error, You haven't log in to google account sucessfully.");
     }
 }
-function loadCourses() {
-  var courseTable = document.getElementById('courses');
-  for (var i = 0; i < allCourses.length; ++i) {
-    var row = document.createElement('tr');
-    var col0 = document.createElement('td');
-    var checkbox = document.createElement('input');
-    checkbox.checked = true;
-    checkbox.type = 'checkbox';
-    checkbox.id = 'checked_course_' + i;
-    col0.appendChild(checkbox);
-    var col1 = document.createElement('td');
-    col1.innerText = allCourses[i].name;
-    row.appendChild(col0);
-    row.appendChild(col1);
-    courseTable.appendChild(row);
-  }
-}
-
-chrome.extension.onRequest.addListener(function (calendar_entries) {
-  allCourses = calendar_entries;
-  loadCourses();
-})
-
-window.onload = function() {
-  chrome.windows.getCurrent(function (currentWindow) {
-    chrome.tabs.query(
-      {
-        active: true,
-        windowId: currentWindow.id
-      },
-      function(activeTabs) {
-        chrome.tabs.executeScript(
-          activeTabs[0].id,
-          {
-            file: 'fetchCourses.js',
-            allFrames: true
-          });
-      });
-  });
-};
