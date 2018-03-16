@@ -26,7 +26,6 @@ function setClassButtons(){
     //update class term
     var classTerm = document.getElementById("classTerm");
     if(allCourses[0][1].substring(0,3) == "Jan"){
-    	//alert(classTerm.innerHTML);
     	classTerm.innerHTML  = "Spring " + allCourses[0][1].substring(8,12);
     }
     else if(allCourses[0][1].substring(0,3) == "Aug"){
@@ -191,14 +190,12 @@ var updateEvent = false;
 var currentEvent;
 //modal for the current event button
 function showBlockEvent(){
-   alert("here");
    var elem = this;
    modal1.style.display = "block";
    updateEvent = true;
    currentEvent = elem.id;
    for(var i = 0; i < 4; i++){
    		var input = document.getElementById("input1"+i);
-        //alert(addEventList[elem.id - allCourses.length]);
        	input.value = addEventList[elem.id - allCourses.length][i];
    }
 }
@@ -210,7 +207,6 @@ function clearAllInput(){
 	for(var i = 0; i < 4 ; i++){
     	var tempInput = document.getElementById("input1"+i);
         if(tempInput.value.length == 0 && i != 3){
-            //alert("Cannot have empty field, Create or Update event failed.");
             success = false;
             break;
         }
@@ -256,7 +252,6 @@ window.onclick = function(event) {
 //function to fetch data to google calendar
 function sendDataToGoogle(){
 	//send all classes and events
-    //alert("send Data to Google");
 
 }
 
