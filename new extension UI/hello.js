@@ -3,6 +3,12 @@ var allCourses = [
   		["CS 30700 LE1","Jan 08, 2018","Apr 28, 2018","MWF","11:30 am - 12:20 pm","Class of 1950 Lecture Hall 224",""],
   		["CS 40800 LE1","Jan 08, 2018","Apr 28, 2018","TR","9:00 am - 10:15 am","Wetherill Lab of Chemistry 104",""]
 ];
+
+// Get the modal
+var modal;
+//pop up window element
+var modal1;
+
 function getOnclickReady(){
 	for(var i = 1; i <= 31 ; i++){
 		document.getElementById("day"+i).addEventListener("click", showBlock);
@@ -11,6 +17,8 @@ function getOnclickReady(){
     document.getElementById("secondClose").addEventListener("click", closeCalendarModal);
     document.getElementById("prev").addEventListener("click", changeMonth);
     document.getElementById("next").addEventListener("click", changeMonth);
+    modal1 = document.getElementById('myModal1');
+    modal = document.getElementById('myModal');
     
 }
 /***function to set up buttons when the page start***/
@@ -53,8 +61,7 @@ function lastButton(){
 
 }
 /***modal function***/
-// Get the modal
-var modal = document.getElementById('myModal');
+
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var currentElement;
@@ -110,8 +117,6 @@ var month;
 var year;
 var lastMonthDays;
 var count;
-//pop up window element
-var modal1 = document.getElementById('myModal1');
 //list of events limited to five
 var addEventList = [];
 var eventCount = 0;
