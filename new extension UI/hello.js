@@ -3,8 +3,16 @@ var allCourses = [
   		["CS 30700 LE1","Jan 08, 2018","Apr 28, 2018","MWF","11:30 am - 12:20 pm","Class of 1950 Lecture Hall 224",""],
   		["CS 40800 LE1","Jan 08, 2018","Apr 28, 2018","TR","9:00 am - 10:15 am","Wetherill Lab of Chemistry 104",""]
 ];
-
-
+function getOnclickReady(){
+	for(var i = 1; i <= 31 ; i++){
+		document.getElementById("day"+i).addEventListener("click", showBlock);
+    }
+    document.getElementById("firstClose").addEventListener("click", closeClassModal);
+    document.getElementById("secondClose").addEventListener("click", closeCalendarModal);
+    document.getElementById("prev").addEventListener("click", changeMonth);
+    document.getElementById("next").addEventListener("click", changeMonth);
+    
+}
 /***function to set up buttons when the page start***/
 function setClassButtons(){
     //update class term
@@ -27,9 +35,10 @@ function setClassButtons(){
     	//a.href = "#";
         a.className = "listButtons";
     	a.id = i;
-        a.onclick = function(){showBlockClass(this)};
+        a.addEventListener("click", showBlockClass);
     	document.body.appendChild(a);
     }
+    getOnclickReady();
     lastButton();
 }
 function lastButton(){
@@ -39,8 +48,9 @@ function lastButton(){
    	lastButton.appendChild(linkText);
 	lastButton.className = "btn btn-default btn-warning btn-md btn-block";
 	lastButton.href = "#fetch to google";
-    lastButton.onclick = function(){sendDataToGoogle()};
     document.body.appendChild(lastButton);
+    lastButton.addEventListener("click", sendDataToGoogle);
+
 }
 /***modal function***/
 // Get the modal
@@ -49,7 +59,8 @@ var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 var currentElement;
 /***When the user clicks the buttons, open the modal***/
-function showBlockClass(elem) {
+function showBlockClass(){
+	var elem = this;
 	currentElement = elem;
   	modal.style.display = "block";
     //if this is a class object load the class data
@@ -92,13 +103,6 @@ function closeClassModal() {
 	modal.style.display = "none";
     clearClassInput();
 }
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-   	if (event.target == modal) {
-    	modal.style.display = "none";
-        clearClassInput();
-	}
-}
 
 /***Calendar***/
 //current year and month
@@ -138,7 +142,8 @@ function changeDays(){
    lastMonthDays = NumDays;
 }
 //function to change the month display in calendar
-function changeMonth(elem){
+function changeMonth(){
+	var elem = this;
 	if(elem.id == "prev"){
 		month--;
     	if(month == -1){
@@ -157,31 +162,32 @@ function changeMonth(elem){
     changeDays();
 }
 //function to display modal
-function showBlock(elem){
+function showBlock(){
 	//Jan 08, 2018 - Apr 28, 2018 MWF 12:30 pm - 1:20 pm
    modal1.style.display = "block";
-   var dateString = monthName[month] + ' ' + elem.innerHTML + ', ' + year + " 07:00 pm - 08:00 pm";
+   var dateString = monthName[month] + ' ' + this.innerHTML + ', ' + year + " 07:00 pm - 08:00 pm";
    var input = document.getElementById("input11");
    input.value = dateString;
 }
 //function to create the button to edit later
 function createEventButton(){
-    document.body.removeChild(document.body.getElementsByTagName("LastButton")[0]);
+  document.body.removeChild(document.body.getElementsByTagName("LastButton")[0]);
 	//Create all class Button
     var a = document.createElement('a');
-    //alert("here");
     var linkText = document.createTextNode(addEventList[addEventList.length - 1][0]);
     a.appendChild(linkText);
     a.className = "listButtons";
     a.id = allCourses.length + eventCount - 1;
-    a.onclick = function(){showBlockEvent(this)};;
+    a.addEventListener("click", showBlockEvent);
     document.body.appendChild(a);
     lastButton();
 }
 var updateEvent = false;
 var currentEvent;
 //modal for the current event button
-function showBlockEvent(elem){
+function showBlockEvent(){
+   alert("here");
+   var elem = this;
    modal1.style.display = "block";
    updateEvent = true;
    currentEvent = elem.id;
@@ -199,7 +205,7 @@ function clearAllInput(){
 	for(var i = 0; i < 4 ; i++){
     	var tempInput = document.getElementById("input1"+i);
         if(tempInput.value.length == 0 && i != 3){
-        	alert("Cannot have empty field, Create or Update event failed.");
+            //alert("Cannot have empty field, Create or Update event failed.");
             success = false;
             break;
         }
@@ -230,20 +236,26 @@ function closeCalendarModal() {
 	modal1.style.display = "none";
     clearAllInput();
 }
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
    	if (event.target == modal1) {
     		modal1.style.display = "none";
         	clearAllInput();
 	}
+    else if (event.target == modal) {
+    	modal.style.display = "none";
+        clearClassInput();
+	}
 }
 //function to fetch data to google calendar
 function sendDataToGoogle(){
-	if(loggined){
-    	//send all classes and events
-        alert("send Data to Google");
-    }
-    else{
-    	alert("Error, You haven't log in to google account sucessfully.");
-    }
+	//send all classes and events
+    //alert("send Data to Google");
+
 }
+
+window.onload = function() {
+  setClassButtons() ; 
+  initDate();
+};

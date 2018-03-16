@@ -9,21 +9,15 @@
   <link href="hello.css" rel="stylesheet" type="text/css" />
 </head>
 <!--set up classes and events buttons when the page start-->
-<body onload="setClassButtons() ; initDate();">
-<!--Google Calendar login-->
-<table id=courses>
-  <tr>
-    <th>*</th>
-    <th>Registered Courses</th>
-  </tr>
-</table>
+<body>
+<span class = "PageTitle">Class List </span>
 <span class = "PageTitle" id="classTerm" style = "color:#CFB53B; margin-right">Summer 2018</span>
 <h1></h1>
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close" onclick = "closeClassModal()">&times;</span>
+    <span class="close" id = "firstClose">&times;</span>
     <label>Activities Title: </label>
     <input type ="text" maxLength="100" id="input0"><br>
     <label>Date and Time:</label>
@@ -40,10 +34,10 @@
 <div class="month">
   <ul>
     <li class="prev">
-  		<a style="color: #CFB53B;" onclick="changeMonth(this)" id = "prev">&#10094;</a>
+  		<a style="color: #CFB53B;" id = "prev">&#10094;</a>
 	</li>
     <li class="next" >
-  		<a style="color: #CFB53B;" onclick="changeMonth(this)" id = "next">&#10095;</a>
+  		<a style="color: #CFB53B;" id = "next">&#10095;</a>
 	</li>
     <li id = "month">
     </li>
@@ -54,37 +48,37 @@
 </ul>
 
 <ul class="days">
-  <a  onclick="showBlock(this)" id = "day1">1</a>
-  <a onclick="showBlock(this)" id = "day2">2</a>
-  <a onclick="showBlock(this)" id = "day3">3</a>
-  <a onclick="showBlock(this)" id = "day4">4</a>
-  <a onclick="showBlock(this)" id = "day5">5</a>
-  <a onclick="showBlock(this)" id = "day6">6</a>
-  <a onclick="showBlock(this)" id = "day7">7</a>
-  <a onclick="showBlock(this)" id = "day8">8</a>
-  <a onclick="showBlock(this)" id = "day9">9</a>
-  <a onclick="showBlock(this)" id = "day10">10</a>
-  <a onclick="showBlock(this)" id = "day11">11</a>
-  <a onclick="showBlock(this)" id = "day12">12</a>
-  <a onclick="showBlock(this)" id = "day13">13</a>
-  <a onclick="showBlock(this)" id = "day14">14</a>
-  <a onclick="showBlock(this)" id = "day15">15</a>
-  <a onclick="showBlock(this)" id = "day16">16</a>
-  <a onclick="showBlock(this)" id = "day17">17</a>
-  <a onclick="showBlock(this)" id = "day18">18</a>
-  <a onclick="showBlock(this)" id = "day19">19</a>
-  <a onclick="showBlock(this)" id = "day20">20</a>
-  <a onclick="showBlock(this)" id = "day21">21</a>
-  <a onclick="showBlock(this)" id = "day22">22</a>
-  <a onclick="showBlock(this)" id = "day23">23</a>
-  <a onclick="showBlock(this)" id = "day24">24</a>
-  <a onclick="showBlock(this)" id = "day25">25</a>
-  <a onclick="showBlock(this)" id = "day26">26</a>
-  <a onclick="showBlock(this)" id = "day27">27</a>
-  <a onclick="showBlock(this)" id = "day28">28</a>
-  <a onclick="showBlock(this)" id = "day29">29</a>
-  <a onclick="showBlock(this)" id = "day30">30</a>
-  <a onclick="showBlock(this)" id = "day31">31</a>
+  <a id = "day1">1</a>
+  <a id = "day2">2</a>
+  <a id = "day3">3</a>
+  <a id = "day4">4</a>
+  <a id = "day5">5</a>
+  <a id = "day6">6</a>
+  <a id = "day7">7</a>
+  <a id = "day8">8</a>
+  <a id = "day9">9</a>
+  <a id = "day10">10</a>
+  <a id = "day11">11</a>
+  <a id = "day12">12</a>
+  <a id = "day13">13</a>
+  <a id = "day14">14</a>
+  <a id = "day15">15</a>
+  <a id = "day16">16</a>
+  <a id = "day17">17</a>
+  <a id = "day18">18</a>
+  <a id = "day19">19</a>
+  <a id = "day20">20</a>
+  <a id = "day21">21</a>
+  <a id = "day22">22</a>
+  <a id = "day23">23</a>
+  <a id = "day24">24</a>
+  <a id = "day25">25</a>
+  <a id = "day26">26</a>
+  <a id = "day27">27</a>
+  <a id = "day28">28</a>
+  <a id = "day29">29</a>
+  <a id = "day30">30</a>
+  <a id = "day31">31</a>
 </ul>
 
 <!-- The Modal -->
@@ -92,7 +86,7 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close" onclick ="closeCalendarModal()">&times;</span>
+    <span class="close" id = "secondClose">&times;</span>
     <label>Activities Title: </label>
     <input type ="text" maxLength="100" id="input10"><br>
     <label>Date and Time:(please keep the same format)</label>
