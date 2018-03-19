@@ -146,14 +146,17 @@ function synchronize() {
           gapi.client.setToken({access_token: token});
 
           // TODO: Loop through all events.
-          var request = gapi.client.calendar.events.insert({
-            'calendarId': 'primary',
-            'resource': allEvents[0]
-          });
+          for (var i = 0; i < allEvents.length; i++)
+          {
+            var request = gapi.client.calendar.events.insert({
+              'calendarId': 'primary',
+              'resource': allEvents[i]
+            });
 
-          request.execute(function(event) {
-            console.log('Event created: ' + event.htmlLink);
-          });
+            request.execute(function(event) {
+              console.log('Event created: ' + event.htmlLink);
+            });
+          }
         });
       });
     });
